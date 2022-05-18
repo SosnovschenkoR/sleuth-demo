@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: app-scheduler
+logging:
+  level:
+    org.springframework.web: INFO
+    org.hibernate: ERROR
+management:
+  metrics:
+    export:
+      datadog:
+        step: 30s
+        enabled: true
+        api-key: dummy_api_key
+        application-key: dummy_application_key
+        host-tag: apollo-scheduler-dev-host
+    tags:
+      application: ${spring.application.name}
+      env: ${spring.profiles.active}
+dd:
+  logs:
+    injection: true
